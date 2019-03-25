@@ -171,7 +171,7 @@ componentDidMount() {
            currentSong={this.state.currentSong}
            currentTime={this.formatTime(this.audioElement.currentTime)}
 
-           duration={this.audioElement.duration}
+           duration={this.formatTime(this.audioElement.duration)}
            handleSongClick={() => this.handleSongClick(this.state.currentSong)}
            handlePrevClick={() => this.handlePrevClick()}
            handleNextClick={() => this.handleNextClick()}
