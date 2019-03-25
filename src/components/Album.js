@@ -64,11 +64,12 @@ componentDidMount() {
     formatTime(time){
     
     if(typeof time == 'number'){
-    const minutes = Math.floor(time / 60)
-    const seconds = Math.floor(time % 60)
-    return minutes + ":" + seconds
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    const _seconds = (seconds < 10) ? "0"+seconds : seconds;
+    return minutes + ":" + _seconds;
     }else{ 
-    	return "-:--"
+    	return "-:--";
 
     }
 
