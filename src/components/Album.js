@@ -61,6 +61,19 @@ componentDidMount() {
      this.setState({ currentSong: song });
    }
  
+    formatTime(time){
+    
+    if(typeof time == 'number'){
+    const minutes = Math.floor(time / 60)
+    const seconds = Math.floor(time % 60)
+    return minutes + ":" + seconds
+    }else{ 
+    	return "-:--"
+
+    }
+
+    }
+
     handleSongClick(song) {
      const isSameSong = this.state.currentSong === song;
       if (this.state.isPlaying && isSameSong) {
@@ -142,7 +155,7 @@ componentDidMount() {
 	           		
 	           			<td>{this.getPlayButton(index, song)}</td>
 	           			<td>{song.title}</td>
-	           			<td>{song.duration}</td>
+	           			<td>{this.formatTime(parseFloat(song.duration))}</td>
 
 	           		</tr>
            		)
@@ -155,7 +168,8 @@ componentDidMount() {
          <PlayerBar
            isPlaying={this.state.isPlaying}
            currentSong={this.state.currentSong}
-           currentTime={this.audioElement.currentTime}
+           currentTime={this.formatTime(this.audioElement.currentTime)}
+
            duration={this.audioElement.duration}
            handleSongClick={() => this.handleSongClick(this.state.currentSong)}
            handlePrevClick={() => this.handlePrevClick()}
